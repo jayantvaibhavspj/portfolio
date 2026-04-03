@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jayant Vaibhav - Premium Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #020617 100%);
+            color: #e0e7ff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent);
+            border-radius: 50%;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .profile-image {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            box-shadow: 0 20px 60px rgba(0, 180, 255, 0.3);
+            animation: float 3s ease-in-out infinite;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), transparent);
+            z-index: -1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        header h1 {
+            font-size: 56px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: 22px;
+            color: #a5f3fc;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .bio {
+            max-width: 750px;
+            color: #cbd5e1;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .quick-stats {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding: 30px 0;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .stat {
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            color: #0f172a;
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        nav {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 18px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            transition: width 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #00d4ff;
+        }
+
+        nav a.active::after {
+            width: 100%;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            margin-bottom: 80px;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 42px;
+            margin-bottom: 40px;
+            color: #f1f5f9;
+            border-left: 5px solid #00d4ff;
+            padding-left: 20px;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.4));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 28px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0, 180, 255, 0.2);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.6));
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #f1f5f9;
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+        }
+
+        .card-meta {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card p {
+            font-size: 15px;
+            color: #cbd5e1;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 153, 255, 0.15));
+            border: 1px solid rgba(0, 180, 255, 0.3);
+            color: #00d4ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge:hover {
+            background: rgba(0, 212, 255, 0.3);
+            border-color: rgba(0, 212, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), transparent);
+        }
+
+        .timeline-item {
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            border-radius: 50%;
+            border: 3px solid rgba(15, 23, 42, 1);
+            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
+        }
+
+        .timeline-item h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .meta {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            font-size: 15px;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-box {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.4));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-box:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0, 180, 255, 0.15);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.6));
+        }
+
+        .skill-box h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: #7dd3fc;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 212, 255, 0.25);
+            color: #00d4ff;
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.4));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            border-color: #00d4ff;
+            color: #00d4ff;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 255, 0.05));
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 180, 255, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            color: #64748b;
+            font-size: 14px;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.5), rgba(2, 6, 23, 0.5));
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .column-title {
+            color: #00d4ff;
+            margin-bottom: 25px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 50px 15px;
+            }
+
+            header h1 {
+                font-size: 36px;
+            }
+
+            .tagline {
+                font-size: 18px;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+                font-size: 60px;
+            }
+
+            .quick-stats {
+                gap: 25px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            main {
+                padding: 30px 15px;
+            }
+
+            section {
+                margin-bottom: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header with Profile -->
+<header>
+    <div class="profile-container">
+        <div class="profile-image">👨‍💻</div>
+        <div>
+            <h1>Jayant Vaibhav</h1>
+            <p class="tagline">AI/ML Engineer • Cloud Developer • Full-Stack Builder</p>
+            <p class="bio">
+                B.Tech CSE (AIML) student at UEM Jaipur with 9.0 CGPA. Passionate about building scalable solutions using AI, blockchain, and cloud technologies. Winner of national-level hackathons and active in tech communities.
+            </p>
+            <div class="quick-stats">
+                <div class="stat">
+                    <div class="stat-number">9.0</div>
+                    <div class="stat-label">CGPA</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Major Projects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">Hackathon Participants</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5K+</div>
+                    <div class="stat-label">YouTube Followers</div>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="mailto:jayantvaibhavspj@gmail.com" class="btn btn-primary">Get In Touch</a>
+                <a href="https://github.com/jayantvaibhavspj" class="btn btn-secondary">View GitHub</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+<nav>
+    <a class="nav-link active" data-section="about">About</a>
+    <a class="nav-link" data-section="projects">Projects</a>
+    <a class="nav-link" data-section="skills">Skills</a>
+    <a class="nav-link" data-section="experience">Experience</a>
+    <a class="nav-link" data-section="contact">Contact</a>
+</nav>
+
+<!-- Main Content -->
+<main>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🎓 Education</h3>
+                <p><strong>B.Tech CSE (AI & ML)</strong></p>
+                <p style="margin-top: 8px; color: #a0aec0;">University of Engineering & Management, Jaipur</p>
+                <p style="margin-top: 8px; color: #64748b;">CGPA: 9.0 | Top 10 Ranking | Pursuing (2023 - Present)</p>
+            </div>
+            <div class="card">
+                <h3>💼 Currently</h3>
+                <p><strong>Software Engineering Intern</strong></p>
+                <p style="margin-top: 8px; color: #a0aec0;">Infotact Solutions</p>
+                <p style="margin-top: 8px; color: #64748b;">Java • SQL • REST APIs • Bug Fixes | Sep 2025 - Dec 2025</p>
+            </div>
+            <div class="card">
+                <h3>🏆 Key Achievement</h3>
+                <p><strong>Innovation Challenge Winner</strong></p>
+                <p style="margin-top: 8px; color: #a0aec0;">IIT BHU 2024</p>
+                <p style="margin-top: 8px; color: #64748b;">Decentralized AI Model Marketplace Project</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🔗 Decentralized AI Model Marketplace</h3>
+                <p class="card-meta">Blockchain • IPFS • Web3 • Smart Contracts</p>
+                <p>Developed a blockchain-based marketplace for publishing and monetizing AI models. Implemented Universal Model Scoring Protocol and IPFS-based decentralized storage for secure, transparent AI model transactions.</p>
+                <div>
+                    <span class="badge">Blockchain</span>
+                    <span class="badge">IPFS</span>
+                    <span class="badge">Smart Contracts</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🎮 Game Theory Based Consensus (DDPoS-GT)</h3>
+                <p class="card-meta">Consensus Algorithm • Game Theory • Blockchain Research</p>
+                <p>Proposed an improved Delegated Proof of Stake consensus algorithm enhanced with game theory principles. Designed decay mechanism to improve validator selection fairness and network security.</p>
+                <div>
+                    <span class="badge">DPoS</span>
+                    <span class="badge">Game Theory</span>
+                    <span class="badge">Research</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>♿ Hand Gesture Controlled Wheelchair</h3>
+                <p class="card-meta">IoT • Gesture Recognition • Embedded Systems • Assistive Tech</p>
+                <p>Built an IoT-based wheelchair navigation system using gesture recognition technology. Enabled real-time movement control through sensor integration and microcontroller programming for assistive technology.</p>
+                <div>
+                    <span class="badge">IoT</span>
+                    <span class="badge">Gesture Recognition</span>
+                    <span class="badge">Microcontroller</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📱 Android Development Projects</h3>
+                <p class="card-meta">Android • Kotlin/Java • Firebase • UI/UX</p>
+                <p>Built and tested multiple Android applications using Java and Kotlin with focus on UI/UX excellence. Integrated Firebase for real-time database, authentication, and Google Play Store deployment.</p>
+                <div>
+                    <span class="badge">Android</span>
+                    <span class="badge">Kotlin</span>
+                    <span class="badge">Firebase</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🤖 AI Chatbot & NLP Projects</h3>
+                <p class="card-meta">NLP • Machine Learning • Python • Deep Learning</p>
+                <p>Developed natural language processing systems and AI chatbots using Python. Implemented deep learning models for text understanding and response generation.</p>
+                <div>
+                    <span class="badge">NLP</span>
+                    <span class="badge">Deep Learning</span>
+                    <span class="badge">Python</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🌦️ Real-time Weather App</h3>
+                <p class="card-meta">Web Development • APIs • JavaScript • Responsive Design</p>
+                <p>Created a live weather application using APIs. Features real-time weather updates, location-based forecasts, and responsive design for mobile and desktop.</p>
+                <div>
+                    <span class="badge">JavaScript</span>
+                    <span class="badge">REST APIs</span>
+                    <span class="badge">HTML/CSS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-box">
+                <h4>Programming Languages</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">C</span>
+                    <span class="skill-tag">Kotlin</span>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h4>Web & Mobile</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Android</span>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h4>Cloud & DevOps</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">AWS EC2</span>
+                    <span class="skill-tag">AWS S3</span>
+                    <span class="skill-tag">Lambda</span>
+                    <span class="skill-tag">Google Cloud</span>
+                    <span class="skill-tag">SageMaker</span>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h4>AI & Machine Learning</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">TensorFlow</span>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h4>Tools & Platforms</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">VS Code</span>
+                    <span class="skill-tag">Linux CLI</span>
+                    <span class="skill-tag">Docker</span>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h4>Soft Skills</h4>
+                <div class="skill-tags">
+                    <span class="skill-tag">Leadership</span>
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">Communication</span>
+                    <span class="skill-tag">Teamwork</span>
+                    <span class="skill-tag">Presentation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Experience & Education</h2>
+        <div class="two-column">
+            <div>
+                <div class="column-title">Professional Experience</div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Software Engineering Intern</h4>
+                        <div class="meta">Infotact Solutions • Sep 2025 - Dec 2025</div>
+                        <p>Contributed to module development in Java, SQL, and REST APIs. Optimized application performance and fixed critical bugs in production systems. Collaborated with senior developers on backend services.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Activity Organization Lead</h4>
+                        <div class="meta">PRADYOG Club (UEM Jaipur) • 2023 - Present</div>
+                        <p>Led organization of 10+ technical events including coding contests, hackathons, and workshops. Improved peer engagement by 40%. Managed club communications and community building.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Hackathon Mentor & Organizer</h4>
+                        <div class="meta">Ace Hack 4.0 • 2024</div>
+                        <p>Mentored 15+ teams in AI/ML and cloud integration best practices. Helped design evaluation process for 250+ participants. Rajasthan's largest hackathon event.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="column-title">Certifications & Awards</div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>AWS Academy Cloud Foundations</h4>
+                        <div class="meta">Nov 2024</div>
+                        <p>Cloud fundamentals and AWS services certification. Expertise in EC2, S3, Lambda, SageMaker, and cloud architecture principles.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Google Cloud Certifications</h4>
+                        <div class="meta">Jan 2025 - Dec 2027</div>
+                        <p>Cybersecurity, Data Analytics, and AI Skill Badges including Document AI, Visual Inspection AI, and Vertex AI prompt design.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>IIT BHU Innovation Challenge Winner</h4>
+                        <div class="meta">2024</div>
+                        <p>National-level recognition for Decentralized AI Model Marketplace project combining blockchain and AI technologies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Virtual Internships -->
+        <h2 style="margin-top: 50px;">Virtual Internships & Training</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Google Android Developer</h3>
+                <p class="card-meta">Virtual Internship • 2024 - Present</p>
+                <p>Built and tested Android applications using Java/Kotlin. Focused on UI/UX design, Firebase integration, and Google Play Store deployment. Completed multiple app projects.</p>
+            </div>
+            <div class="card">
+                <h3>AWS AI-ML Specialist</h3>
+                <p class="card-meta">Virtual Internship • 2025 - Present</p>
+                <p>Designed ML pipelines with SageMaker. Applied AWS Rekognition for image analytics and Comprehend for text analysis. Worked on end-to-end ML projects.</p>
+            </div>
+            <div class="card">
+                <h3>Google Cloud Fundamentals</h3>
+                <p class="card-meta">Virtual Internship • 2024</p>
+                <p>Gained exposure to BigQuery, CI/CD pipelines, and Document AI. Completed cloud architecture projects and DevOps practices.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Let's Connect</h2>
+        <div style="text-align: center;">
+            <p style="color: #cbd5e1; font-size: 16px; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                I'm always interested in exciting opportunities, meaningful collaborations, and interesting conversations. Feel free to reach out through any of the channels below.
+            </p>
+            <div class="social-links">
+                <a href="mailto:jayantvaibhavspj@gmail.com" class="social-link">
+                    📧 Email
+                </a>
+                <a href="tel:+917561951657" class="social-link">
+                    📱 Phone
+                </a>
+                <a href="https://linkedin.com/in/jayant-vaibhav-282768249" class="social-link" target="_blank">
+                    🔗 LinkedIn
+                </a>
+                <a href="https://github.com/jayantvaibhavspj" class="social-link" target="_blank">
+                    💻 GitHub
+                </a>
+                <a href="https://www.youtube.com/@apnavlogzone" class="social-link" target="_blank">
+                    🎬 YouTube
+                </a>
+                <a href="https://twitter.com" class="social-link" target="_blank">
+                    𝕏 Twitter
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 Jayant Vaibhav. All rights reserved.</p>
+    <p>Crafted with passion and cutting-edge web technologies. ✨</p>
+</footer>
+
+<!-- JavaScript -->
+<script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            
+            const sectionId = link.dataset.section;
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+                const sectionId = section.id;
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.section === sectionId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+
+    // Smooth scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
